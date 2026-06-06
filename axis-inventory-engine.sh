@@ -28,6 +28,7 @@ while true; do
   "inventory": {
     "system_packages": $PKG_COUNT,
     "hive_directories": $DIR_COUNT,
+    "web_editor_node": "http://10.155.149.40:8080",
     "storage_available": "${DISK_AVAIL}"
   },
   "timestamp": $(date +%s)

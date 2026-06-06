@@ -1,1 +1,15 @@
+# =========================================================================
+# AXIS REPOSITORY CONCEALMENT LAYER (REDACTED)
+# Blocks runtime data and structural tokens from leaking to the public root
+# =========================================================================
+
+# Block telemetry runtime dumps
+*.log
 inventory_engine.log
+
+# Block credential stores and local config definitions
+.config/mosquitto/passwd
+.config/mosquitto/certs/
+*.key
+*.crt
+*.csr
