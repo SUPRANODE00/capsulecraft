@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AXIS Spatial Node Viewport</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>body { margin: 0; background-color: #050505; overflow: hidden; }</style>
+</head>
+<body>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshBasicMaterial({ color: 0x3388cc, wireframe: true, opacity: 0.2, transparent: true });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        const lat = 29.7604 * (Math.PI / 180);
+        const lon = -95.3698 * (Math.PI / 180);
+        const x = Math.cos(lat) * Math.cos(lon);
+        const y = Math.cos(lat) * Math.sin(lon);
+        const z = Math.sin(lat);
+
+        const nodeGeo = new THREE.SphereGeometry(0.03, 8, 8);
+        const nodeMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const nodeMesh = new THREE.Mesh(nodeGeo, nodeMat);
+        nodeMesh.position.set(x, z, -y);
+        scene.add(nodeMesh);
+
+        camera.position.z = 2;
+        function animate() { requestAnimationFrame(animate); globe.rotation.y += 0.002; renderer.render(scene, camera); }
+        animate();
+    </script>
+</body>
+</html>
