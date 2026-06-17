@@ -1,8 +1,10 @@
 #!/bin/bash
-read SPOKE_ID
-if grep -q "$SPOKE_ID" spokes.json; then
-    echo "[Auth] Access Granted: $SPOKE_ID"
-    ./axis_converge.sh --shield-activate
+PAYLOAD=$(cat)
+ID=$(echo $PAYLOAD | jq -r '.spoke_id')
+
+if grep -q "$ID" spokes.json; then
+    echo "[Auth] Access Granted: $ID"
+    echo "$PAYLOAD" | ./planetary_sweep.sh
 else
     echo "[Auth] Access Denied."
 fi

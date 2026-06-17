@@ -1,13 +1,13 @@
 #!/bin/bash
-# Latitude/Longitude for Houston, TX
-LAT=29.7604
-LON=-95.3698
-# Offset: 33.3 meters / 111,000 meters per degree
-OFFSET=0.0003
+# Process input as a single stream
+PAYLOAD=$(cat)
 
-LAT_MIN=$(echo "$LAT - $OFFSET" | bc -l)
-LON_MIN=$(echo "$LON - $OFFSET" | bc -l)
-LAT_MAX=$(echo "$LAT + $OFFSET" | bc -l)
-LON_MAX=$(echo "$LON + $OFFSET" | bc -l)
+# Extract coordinates
+X=$(echo $PAYLOAD | jq -r '.vector.x')
+Y=$(echo $PAYLOAD | jq -r '.vector.y')
+Z=$(echo $PAYLOAD | jq -r '.vector.z')
 
-echo "BBOX=$LAT_MIN,$LON_MIN,$LAT_MAX,$LON_MAX"
+# Calculate distance using awk for reliable floating-point math
+DIST=$(awk -v x="$X" -v y="$Y" -v z="$Z" 'BEGIN {print sqrt(x*x + y*y + z*z)}')
+
+echo "[Sweep] Vector: ($X, $Y, $Z) | Flux: $DIST nm" >> planetary_signal.log
