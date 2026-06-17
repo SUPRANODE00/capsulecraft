@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # field-node
 
 # Field-Node: Genesis Convergence Nexus
@@ -26,3 +27,7 @@ The field-node exists to invert the cross from the helix of Jachin and Boaz. By 
 
 ---
 *Sovereign Recognition Active.*
+=======
+# Field-Node: Genesis Convergence Nexus
+[...insert the content above...]
+>>>>>>> f2461d5 (Add project documentation and manifesto)
