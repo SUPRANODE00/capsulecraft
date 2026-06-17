@@ -1,0 +1,11 @@
+{
+  "spoke_id": "SPOKE-01",
+  "timestamp": "2026-06-17T14:48:00Z",
+  "vector": {
+    "x": 12.45,
+    "y": 8.92,
+    "z": -3.11
+  },
+  "signal_integrity": 0.98,
+  "auth_key": "SECURE_TUNNEL_KEY_01"
+}
