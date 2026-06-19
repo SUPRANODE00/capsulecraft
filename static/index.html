@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Sovereign Node Field Control</title>
+  <style>
+    body { font-family: monospace; margin: 20px; background: #050505; color: #00ff00; }
+    h1, h3 { color: #00ff00; text-shadow: 0 0 5px #00ff00; margin-bottom: 5px; }
+    hr { border-color: #00ff00; }
+    .panel { display: inline-block; vertical-align: top; width: 48%; min-width: 320px; margin-bottom: 20px; }
+    pre { background: #000; color: #00ff00; padding: 12px; height: 260px; overflow: auto; border: 1px solid #00ff00; border-radius: 4px; box-shadow: 0 0 10px rgba(0,255,0,0.2); }
+    .metrics { line-height: 1.6; font-size: 13px; }
+    .highlight { color: #fff; text-shadow: 0 0 5px #fff; }
+    input { background: #000; color: #00ff00; border: 1px solid #00ff00; padding: 6px; font-family: monospace; width: 60%; }
+    button { background: #00ff00; color: #000; border: none; padding: 6px 12px; font-family: monospace; font-weight: bold; cursor: pointer; }
+    button:hover { background: #fff; color: #000; box-shadow: 0 0 8px #fff; }
+  </style>
+</head>
+<body>
+  <h1>// SOVEREIGN EDGE SECTOR CONTROL //</h1>
+  <p>SYSTEM OPERATOR: sl1th3r | SIGNATURE: /L𖤐R/</p>
+  <hr>
+  
+  <div class="panel">
+    <h3>Active Telemetry Radiograph</h3>
+    <div id="status" class="metrics">Scanning node network arrays...</div>
+    <br>
+    <h3>Signal Modulation Injection</h3>
+    <input id="cmd" placeholder="Modulate command string..." />
+    <button onclick="sendAction()">Inject</button>
+  </div>
+
+  <div class="panel">
+    <h3>Latest Validated Payload (Pydantic Model)</h3>
+    <pre id="payload_json">Waiting for signal packet...</pre>
+  </div>
+
+  <hr>
+  <h3>System Event Log Stream (24/7 Discovery)</h3>
+  <pre id="events"></pre>
+
+  <script>
+    async function refresh() {
+      try {
+        const r = await fetch("/api/state");
+        const s = await r.json();
+        
+        document.getElementById("status").innerHTML = `
+          <strong>ROOT AUTHORITY:</strong> <span class="highlight">${s.node_authority}</span><br>
+          <strong>GENESIS HASH:</strong> ${s.genesis_hash.substring(0, 24)}...<br>
+          <strong>GEO BOUNDARY ANCHOR:</strong> ${s.gps.lat}, ${s.gps.lon}<br>
+          <strong>SWEEP RADIUS:</strong> <span class="highlight">${s.radius_ft} Feet Continuous</span><br>
+          <strong>RF BEACON BAND:</strong> ${s.rf_metrics.frequency_mhz} MHz Small-Cell
+        `;
+        
+        document.getElementById("payload_json").textContent = JSON.stringify(s.latest_sweep, null, 2);
+        document.getElementById("events").textContent = s.events.map(e => `[${e.ts}] ${e.msg}`).reverse().join("\n");
+      } catch (e) { 
+        console.error("Signal severed", e); 
+      }
+    }
+
+    async function sendAction() {
+      const command = document.getElementById("cmd").value;
+      if(!command) return;
+      await fetch("/api/action", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({command})
+      });
+      document.getElementById("cmd").value = "";
+      await refresh();
+    }
+
+    setInterval(refresh, 1500);
+    refresh();
+  </script>
+</body>
+</html>
