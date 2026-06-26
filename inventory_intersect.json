@@ -1,0 +1,11 @@
+{
+  "center": {"x": 0, "y": 0, "z": 0},
+  "bounds": {
+    "cubicle": {
+      "min": [-33.3, -33.3, -33.3],
+      "max": [33.3, 33.3, 33.3]
+    },
+    "sphere": {"radius": 33.3}
+  },
+  "mesh_envelope": "urn:uuid:41F052B2-5907-4389-800B-2DA9CC1D7BB3"
+}
