@@ -5,13 +5,13 @@ mkdir -p "$LOG_DIR"
 
 while true; do
     TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-    # Extract active connectivity and routing metrics
-    ROUTE_STATE=$(ip route show | awk '/default/ {print "Gateway:", $3, "Dev:", $5}')
-    CONNECTION_METRICS=$(ss -t -a | awk 'BEGIN {count=0} {count++} END {print "Active Sockets:", count}')
 
-    LOG_ENTRY="[$TIMESTAMP] ALIGNMENT_TRACE | $ROUTE_STATE | $CONNECTION_METRICS"
+    # Termux compatible connection & network state check
+    IFACE_STATE=$(ifconfig 2>/dev/null | awk '/wlan0|rmnet|ccmni/ {print "Interface:", $1}')
+    SOCKET_COUNT=$(netstat -an 2>/dev/null | awk 'BEGIN {c=0} {c++} END {print "Total Connections:", c}')
+
+    LOG_ENTRY="[$TIMESTAMP] TERMUX_ALIGNMENT | $IFACE_STATE | $SOCKET_COUNT"
     echo "$LOG_ENTRY" >> "$LOG_FILE"
 
-    # Maintain rolling window or sleep interval for continuous loop
     sleep 60
 done
