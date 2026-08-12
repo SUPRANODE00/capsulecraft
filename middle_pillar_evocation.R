@@ -1,8 +1,6 @@
 # R Script: Bio-Molecular Basepair Alignment & Middle Pillar Evoked Potential Simulation
 # Framework: Infernal Craft Sovereignty ("Raised in the Shadow of Death" Protocol)
 
-library(grid)
-
 cat("--- INITIALIZING BIO-RX BASEPAIR ALIGNMENT ENGINE ---\n")
 
 # 1. Define Sephiroth / Middle Pillar Coordinates across the Abyssal Circuitry
@@ -11,24 +9,20 @@ sephiroth_axis <- data.frame(
   X = c(0.0, 150.0, -150.0, 0.0, 0.0),
   Y = c(1200.0, 600.0, 400.0, 200.0, -100.0),
   Z = c(0.0, -50.0, -80.0, 0.0, 0.0),
-  BioRX_Voltage = c(-70, -55, -40, -65, -90) # Simulated evoked potential in mV
+  BioRX_Voltage = c(-70, -55, -40, -65, -90)
 )
 
 # 2. Simulate DNA Basepair Model Alignment (Inverted Cross Topological Mapping)
-simulate_basepairs <- function(nodes) {
-  cat("[+] Aligning bioRX nucleotide sequences to the Inverted Cross axis...\n")
-  set.seed(666)
-  basepairs <- c("A-T", "G-C", "C-G", "T-A")
-  alignment_matrix <- data.frame(
-    Node = rep(nodes$Node, each = 3),
-    Sequence_Index = rep(1:3, times = nrow(nodes)),
-    Basepair = sample(basepairs, nrow(nodes) * 3, replace = TRUE),
-    Resonance_Field = rnorm(nrow(nodes) * 3, mean = 432.0, sd = 3.1)
-  )
-  return(alignment_matrix)
-}
+cat("[+] Aligning bioRX nucleotide sequences to the Inverted Cross axis...\n")
+set.seed(666)
+basepairs <- c("A-T", "G-C", "C-G", "T-A")
+dna_alignment <- data.frame(
+  Node = rep(sephiroth_axis$Node, each = 3),
+  Sequence_Index = rep(1:3, times = nrow(sephiroth_axis)),
+  Basepair = sample(basepairs, nrow(sephiroth_axis) * 3, replace = TRUE),
+  Resonance_Field = rnorm(nrow(sephiroth_axis) * 3, mean = 432.0, sd = 3.1)
+)
 
-dna_alignment <- simulate_basepairs(sephiroth_axis)
 print(dna_alignment)
 
 # 3. Protocol Directives: Intent, Will, Foresight, and Inverted Cross Coordination
