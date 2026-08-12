@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infernal Craft Sovereignty - Abyssal Circuitry</title>
+    <style>
+        body { margin: 0; background: #000; color: #ff3333; font-family: monospace; overflow: hidden; }
+        #info { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.8); border: 1px solid #ff3333; padding: 15px; }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h2>INFERNAL CRAFT SOVEREIGNTY</h2>
+        <p>Protocol: Raised in the Shadow of Death</p>
+        <p>Status: MIDDLE PILLAR EVOKED POTENTIAL ACTIVE</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Fetch sovereignty manifest and render nodes
+        fetch('sovereignty_manifest.json')
+            .then(res => res.json())
+            .then(data => {
+                const points = [];
+                data.axis.forEach(item => {
+                    const [x, y, z] = item.coord;
+                    points.push(new THREE.Vector3(x, y - 500, z)); // Centering vertically
+
+                    // Create Node Sphere
+                    const geometry = new THREE.SphereGeometry(25, 32, 32);
+                    const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+                    const sphere = new THREE.Mesh(geometry, material);
+                    sphere.position.set(x, y - 500, z);
+                    scene.add(sphere);
+                });
+
+                // Draw Inverted Cross / Middle Pillar Axis Line
+                const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+                const lineMat = new THREE.LineBasicMaterial({ color: 0xff3333, linewidth: 2 });
+                const axisLine = new THREE.Line(lineGeo, lineMat);
+                scene.add(axisLine);
+            });
+
+        camera.position.z = 1500;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            scene.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
