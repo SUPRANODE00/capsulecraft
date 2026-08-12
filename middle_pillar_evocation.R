@@ -12,15 +12,21 @@ sephiroth_axis <- data.frame(
   BioRX_Voltage = c(-70, -55, -40, -65, -90)
 )
 
-# 2. Simulate DNA Basepair Model Alignment (Inverted Cross Topological Mapping)
+# 2. Simulate DNA Basepair Model Alignment (Inverted Cross Topological Mapping using deterministic/pseudo-random fallback)
 cat("[+] Aligning bioRX nucleotide sequences to the Inverted Cross axis...\n")
-set.seed(666)
 basepairs <- c("A-T", "G-C", "C-G", "T-A")
+total_rows <- nrow(sephiroth_axis) * 3
+
+# Manual pseudo-random field generation without stats package dependency
+set.seed(666)
+pseudo_noise <- ((1:total_rows * 37) %% 100) / 10.0
+resonance_field <- 432.0 + (pseudo_noise - 5.0) * 0.3
+
 dna_alignment <- data.frame(
   Node = rep(sephiroth_axis$Node, each = 3),
   Sequence_Index = rep(1:3, times = nrow(sephiroth_axis)),
-  Basepair = sample(basepairs, nrow(sephiroth_axis) * 3, replace = TRUE),
-  Resonance_Field = rnorm(nrow(sephiroth_axis) * 3, mean = 432.0, sd = 3.1)
+  Basepair = basepairs[((1:total_rows + 2) %% length(basepairs)) + 1],
+  Resonance_Field = resonance_field
 )
 
 print(dna_alignment)
