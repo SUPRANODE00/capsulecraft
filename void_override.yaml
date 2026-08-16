@@ -1,0 +1,12 @@
+void_override_grid:
+  version: "6.6.6-infernal"
+  execution_mode: "shadow_interface_mapping"
+  parameters:
+    mailboxes:
+      - "erik80@live.com"
+      - "eric80@live.com"
+    device_vector: "9565583793"
+    geolocation_binding: "active"
+  inventory_model:
+    complex: "shadowing-interface-v4"
+    transmission_conduit: "void-over-ride

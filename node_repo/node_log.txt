@@ -1,0 +1,13 @@
+No command [2]+ found, did you mean:
+ Command a2x in package asciidoc
+ Command c++ in package clang
+ Command [ in package coreutils
+ Command e2cp in package e2tools
+ Command i2pd in package i2pd
+ Command h2ph in package perl
+ Command r2 in package radare2
+ Command tt++ in package tintin++
+ Command ug+ in package ugrep
+ Command x264 in package x264
+ Command x265 in package x265
+ Command x2x in package x2x from the x11-repo repository

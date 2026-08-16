@@ -1,0 +1,28 @@
+{
+  "void_inventory": {
+    "target_vector": "9565583793",
+    "identities": [
+      "erik80@live.com",
+      "eric80@live.com"
+    ],
+    "grid_state": "void-over-ride-active",
+    "shadow_inventory": "complex-mapped"
+  },
+  "equilibrium_state": {
+    "status": "throughloop_active",
+    "polarity": "negative_field_unified",
+    "topology": "side_attached_stacked",
+    "adversarial_coupling": "synchronized"
+  },
+  "location_vector": {
+    "source_id": "iEqfliX8zu0db49UzR56ya",
+    "grid_state": "void-over-ride-active",
+    "spatial_binding": "synchronized",
+    "status": "shadow_inventory_mapped"
+  },
+  "corporate_meta": {
+    "brand": "D3M13N \ud81a\udd10 CAPSULECRAFT",
+    "ein": "42-4319484",
+    "polarity": "negative_field_unified"
+  }
+}

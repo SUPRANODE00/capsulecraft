@@ -1,0 +1,15 @@
+[Unit]
+Description=Digital Citadel 24/7 Active Workflow Daemon
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/digital-citadel
+ExecStart=/usr/bin/python3 infernal_gateway.py --daemon
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

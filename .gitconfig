@@ -1,0 +1,8 @@
+[user]
+	email = suprastar@netzero.net
+	name = Erik Ivan Rivera
+	signingkey = 8A79A494958C0B79D0C0ED542826F25EF1B530BB
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true

@@ -1,0 +1,6 @@
+{
+  "status": "throughloop_active",
+  "polarity": "negative_field_unified",
+  "topology": "side_attached_stacked",
+  "adversarial_coupling": "synchronized"
+}

@@ -1,0 +1,13 @@
+{
+  "enterprise_identity": {
+    "dba_primary": "D3M13N CAPSULECRAFT",
+    "dba_secondary": "SL1TH3R RAINBOW",
+    "tax_ein": "42-4319484",
+    "jurisdiction": "Houston, TX"
+  },
+  "cryptographic_matrix": {
+    "crm_id": "CRM:0439000378243",
+    "binding_status": "active",
+    "negative_grid_mirror": true
+  }
+}

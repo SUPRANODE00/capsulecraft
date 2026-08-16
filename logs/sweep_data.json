@@ -1,0 +1,15 @@
+{
+    "measurements": [
+        {
+            "lon": -95.170232,
+            "lat": 29.711195,
+            "mcc": 310,
+            "mnc": 410,
+            "lac": 52712,
+            "cellid": 864246,
+            "measured_at": 1781667980090,
+            "signal": -61,
+            "act": "LTE"
+        }
+    ]
+}

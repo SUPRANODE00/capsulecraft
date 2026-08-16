@@ -1,0 +1,8 @@
+.android/
+.cache/
+.node_modules/
+.npm/
+.python_history
+*.log
+*.tmp
+__pycache__/

@@ -1,0 +1,13 @@
+{
+  "corporate_entity": "SUPRANODE00DEMIEN",
+  "ein": "42-4319484",
+  "brand": "D3M13N 𖤐 CAPSULECRAFT",
+  "classification_status": "RESTRICTED_TRADE_SECRET",
+  "legal_framework": "Defend Trade Secrets Act (DTSA)",
+  "assets": [
+    "Compatibility Grid-Capsule Allocator (<compat>)",
+    "Font-Variant State Synthesizer (<font>)",
+    "Encircled Presentation Binders (<circle>/<isolated>)"
+  ],
+  "timestamp": "2026-08-12T19:37:10Z"
+}
