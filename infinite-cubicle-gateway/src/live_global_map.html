@@ -7,7 +7,7 @@
     <style>
         body { margin:0; background:#000; color:#ff0033; font-family:monospace; }
         #map { height: 100vh; width: 100vw; }
-        #hud { position:absolute; top:10px; left:10px; z-index:1000; background:rgba(0,0,0,0.8); border:1px solid #ff0033; padding:10px; }
+        #hud { position:absolute; top:10px; left:10px; z-index:1000; background:rgba(0,0,0,0.85); border:1px solid #ff0033; padding:12px; }
     </style>
 </head>
 <body>
@@ -20,8 +20,16 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         var map = L.map('map').setView([29.6044, -95.2750], 14);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
-        var marker = L.marker([29.6044, -95.2750]).addTo(map).bindPopup('<b>Active Node Origin</b>').openPopup();
+        
+        // Switched to standard OpenStreetMap tile provider (No API key restriction)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors | SL1TH3R 𖤐 RAINBOW'
+        }).addTo(map);
+
+        var marker = L.marker([29.6044, -95.2750]).addTo(map)
+            .bindPopup('<b>Active Node Origin</b><br>SL1TH3R-RAINBOW-42').openPopup();
+
         setInterval(function() {
             var newLat = 29.6044 + (Math.random() - 0.5) * 0.001;
             var newLon = -95.2750 + (Math.random() - 0.5) * 0.001;
